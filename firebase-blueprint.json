@@ -1,0 +1,129 @@
+{
+  "entities": {
+    "Purchase": {
+      "path": "users/{userId}/purchases/{purchaseId}",
+      "description": "Purchases of restaurant supplies entered by purchasing worker",
+      "properties": {
+        "userId": { "type": "string" },
+        "supplier": { "type": "string" },
+        "category": { "type": "string" },
+        "productName": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unit": { "type": "string" },
+        "unitPrice": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "destination": { "type": "string" },
+        "isDailyPurchase": { "type": "boolean" },
+        "workerName": { "type": "string" },
+        "ticketTextNotes": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "productName", "quantity", "unitPrice", "totalAmount"]
+    },
+    "InventoryItem": {
+      "path": "users/{userId}/inventory/{inventoryId}",
+      "description": "Stock of supplies and unit valued investment",
+      "properties": {
+        "userId": { "type": "string" },
+        "productName": { "type": "string" },
+        "category": { "type": "string" },
+        "currentStock": { "type": "number" },
+        "unit": { "type": "string" },
+        "unitCost": { "type": "number" },
+        "destination": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "productName", "currentStock", "unitCost"]
+    },
+    "Sale": {
+      "path": "users/{userId}/sales/{saleId}",
+      "description": "Sales records from salon register tablet or delivery",
+      "properties": {
+        "userId": { "type": "string" },
+        "channel": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "productName": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unitPrice": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "deliveryRound": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "channel", "paymentMethod", "productName", "totalAmount"]
+    },
+    "DeliveryShift": {
+      "path": "users/{userId}/delivery_shifts/{shiftId}",
+      "description": "Daily delivery rounds for the delivery driver (3 times a day, 1 on Sunday)",
+      "properties": {
+        "userId": { "type": "string" },
+        "roundNumber": { "type": "number" },
+        "dayOfWeek": { "type": "string" },
+        "driverName": { "type": "string" },
+        "totalOrdersCount": { "type": "number" },
+        "totalGuisadosCount": { "type": "number" },
+        "cashCollected": { "type": "number" },
+        "depositsCollected": { "type": "number" },
+        "totalCollected": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "roundNumber"]
+    },
+    "DeliveryOrder": {
+      "path": "users/{userId}/delivery_orders/{orderId}",
+      "description": "Individual delivery orders with count of guisados per order and payment method",
+      "properties": {
+        "userId": { "type": "string" },
+        "shiftId": { "type": "number" },
+        "customerName": { "type": "string" },
+        "guisadosCount": { "type": "number" },
+        "guisadosDescription": { "type": "string" },
+        "pricePerGuisado": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "isDelivered": { "type": "boolean" },
+        "isReturned": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "guisadosCount", "totalAmount", "paymentMethod"]
+    },
+    "Expense": {
+      "path": "users/{userId}/expenses/{expenseId}",
+      "description": "Operational expenses like rent, power, gas, wages",
+      "properties": {
+        "userId": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "category", "amount"]
+    },
+    "WasteRecord": {
+      "path": "users/{userId}/waste_records/{wasteId}",
+      "description": "Recorded spoilage and food waste deducted from inventory",
+      "properties": {
+        "userId": { "type": "string" },
+        "productName": { "type": "string" },
+        "category": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unit": { "type": "string" },
+        "estimatedCost": { "type": "number" },
+        "reason": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["userId", "productName", "quantity", "estimatedCost", "reason"]
+    }
+  }
+}

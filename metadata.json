@@ -1,0 +1,8 @@
+{
+  "name": "Control Total",
+  "description": "Plataforma de inventario, mermas, insumos y finanzas para restaurante",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
